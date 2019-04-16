@@ -26,7 +26,7 @@ public class DeepingFirstSearch {
     }
 
 
-    public int DFS(Integer inicio, Integer destino){
+    public String DFS(Integer inicio, Integer destino){
         Stack<Triplet> paraVisitar = new Stack<>();
         verticesVisitados[inicio] = true;
         distancias[inicio] = 0;
@@ -52,13 +52,42 @@ public class DeepingFirstSearch {
             }
         }
         
-        if(verticesVisitados[destino]==true) {
-        	return 1;
-        } 	
-        else {
-        	return 0;
+        if(verticesVisitados[destino] == true) {
+        	String caminhoInicioDestinoPeso = gerarCaminho(inicio,  destino);
+        	return caminhoInicioDestinoPeso;
         }
+        else {
+	    	return "Não há conexão entre esses dois vértices";
+	    }
     }
+    
+    private String gerarCaminho(Integer inicio, Integer destino) {
+		String caminhoInicioDestinoPeso = new String();
+		caminhoInicioDestinoPeso += "Caminho encontrado pelo DFS:\n";
+		Stack<Integer> caminhoInicioDestino = new Stack<>();
+		caminhoInicioDestino.add(destino);
+		int verticeAtual = destino;
+		while(true){
+			if(verticePai[verticeAtual] != caminhoInicioDestino.peek() && 
+					verticePai[verticeAtual] != -1){
+			    caminhoInicioDestino.add(verticePai[verticeAtual]);
+			    verticeAtual = verticePai[verticeAtual];
+			}
+			else{
+				break;
+			}
+		}
+		int pesoDoCaminho = 0;
+		pesoDoCaminho += pesos[caminhoInicioDestino.peek()];
+		caminhoInicioDestinoPeso += caminhoInicioDestino.pop();
+	    while(!caminhoInicioDestino.isEmpty()){
+	    	caminhoInicioDestinoPeso+= " -> " + caminhoInicioDestino.peek();
+	        pesoDoCaminho += pesos[caminhoInicioDestino.pop()];	     
+	    }
+	    caminhoInicioDestinoPeso += "\n";
+	    caminhoInicioDestinoPeso += "Distância total: " + pesoDoCaminho + "\n";
+	    return caminhoInicioDestinoPeso;
+	}
     
     private Stack<Triplet> printaFila(Stack<Triplet> paraVisitar) {
 		Stack<Triplet> paraVisitarClone =

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.PriorityQueue;
 import java.util.Set;
+import java.util.Stack;
 import java.util.Vector;
 
 public class Dijkstra {
@@ -28,7 +29,7 @@ public class Dijkstra {
 		}
 	}
 
-	public Integer ssspDijkstra(int inicio, int destino) {
+	public String ssspDijkstra(Integer inicio, Integer destino) {
 	    PriorityQueue<Triplet> paraVisitar = 
 	    		new PriorityQueue<Triplet>(new TripletComparator());
 
@@ -78,8 +79,42 @@ public class Dijkstra {
 	           System.out.println("\nNenhum caminho escolhido.\nSem opções restantes.");
 	        }
 	    }
+	    
+	    if(verticesVisitados.contains(destino)==true) {
+	    	String caminhoInicioDestinoPeso = gerarCaminho(inicio,  destino);
+	    	return caminhoInicioDestinoPeso;
+	    }
+	    else {
+	    	return "Não há conexão entre esses dois vértices";
+	    }
+	}
 
-	    return distancias[destino];
+	private String gerarCaminho(Integer inicio, Integer destino) {
+		String caminhoInicioDestinoPeso = new String();
+		caminhoInicioDestinoPeso += "Caminho encontrado pelo Dijkstra:\n";
+		Stack<Integer> caminhoInicioDestino = new Stack<>();
+		caminhoInicioDestino.add(destino);
+		int verticeAtual = destino;
+		while(true){
+			if(verticePai[verticeAtual] != caminhoInicioDestino.peek() && 
+					verticePai[verticeAtual] != -1){
+			    caminhoInicioDestino.add(verticePai[verticeAtual]);
+			    verticeAtual = verticePai[verticeAtual];
+			}
+			else{
+				break;
+			}
+		}
+		int pesoDoCaminho = 0;
+		pesoDoCaminho += pesos[caminhoInicioDestino.peek()];
+		caminhoInicioDestinoPeso += caminhoInicioDestino.pop();
+	    while(!caminhoInicioDestino.isEmpty()){
+	    	caminhoInicioDestinoPeso+= " -> " + caminhoInicioDestino.peek();
+	        pesoDoCaminho += pesos[caminhoInicioDestino.pop()];	     
+	    }
+	    caminhoInicioDestinoPeso += "\n";
+	    caminhoInicioDestinoPeso += "Distância total: " + pesoDoCaminho + "\n";
+	    return caminhoInicioDestinoPeso;
 	}
 
 	private PriorityQueue<Triplet> printaFila(PriorityQueue<Triplet> paraVisitar) {

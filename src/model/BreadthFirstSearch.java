@@ -26,7 +26,7 @@ public class BreadthFirstSearch {
     }
 
 
-    public int BFS(Integer inicio, Integer destino){
+    public String BFS(Integer inicio, Integer destino){
         Queue<Triplet> paraVisitar = new LinkedList<>();
         verticesVisitados[inicio] = true;
         distancias[inicio] = 0;
@@ -52,13 +52,42 @@ public class BreadthFirstSearch {
             }
         }
         
-        if(verticesVisitados[destino]==true) {
-        	return 1;
-        } 	
-        else {
-        	return 0;
+        if(verticesVisitados[destino] == true) {
+        	String caminhoInicioDestinoPeso = gerarCaminho(inicio,  destino);
+        	return caminhoInicioDestinoPeso;
         }
+        else {
+	    	return "Não há conexão entre esses dois vértices";
+	    }
     }
+    
+    private String gerarCaminho(Integer inicio, Integer destino) {
+		String caminhoInicioDestinoPeso = new String();
+		caminhoInicioDestinoPeso += "Caminho encontrado pelo BFS:\n";
+		Stack<Integer> caminhoInicioDestino = new Stack<>();
+		caminhoInicioDestino.add(destino);
+		int verticeAtual = destino;
+		while(true){
+			if(verticePai[verticeAtual] != caminhoInicioDestino.peek() && 
+					verticePai[verticeAtual] != -1){
+			    caminhoInicioDestino.add(verticePai[verticeAtual]);
+			    verticeAtual = verticePai[verticeAtual];
+			}
+			else{
+				break;
+			}
+		}
+		int pesoDoCaminho = 0;
+		pesoDoCaminho += pesos[caminhoInicioDestino.peek()];
+		caminhoInicioDestinoPeso += caminhoInicioDestino.pop();
+	    while(!caminhoInicioDestino.isEmpty()){
+	    	caminhoInicioDestinoPeso+= " -> " + caminhoInicioDestino.peek();
+	        pesoDoCaminho += pesos[caminhoInicioDestino.pop()];	     
+	    }
+	    caminhoInicioDestinoPeso += "\n";
+	    caminhoInicioDestinoPeso += "Distância total: " + pesoDoCaminho + "\n";
+	    return caminhoInicioDestinoPeso;
+	}
     
     private Queue<Triplet> printaFila(Queue<Triplet> paraVisitar) {
 		Queue<Triplet> paraVisitarClone =
