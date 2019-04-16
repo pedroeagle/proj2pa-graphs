@@ -3,8 +3,12 @@ package view;
 import javax.swing.*;
 
 public class MainPage {
-    private JButton button1;
-    private JButton button2;
-    private JButton button3;
-    private JButton button4;
+    private JButton createMainButton;
+    private JButton bfsMainButton;
+    private JButton dfsMainButton;
+    private JButton djiMainButton;
+    private JButton generateMainButton;
+    private JTextArea createMainText;
+    private JTextArea generateMainText;
+    private JTextArea infoMainText;
 }
