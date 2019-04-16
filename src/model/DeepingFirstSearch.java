@@ -1,61 +1,93 @@
 package model;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.Vector;
+import java.util.*;
 
 public class DeepingFirstSearch {
-    private Set<Integer> verticesVisitados;
     private ArrayList<Vector<Pair>> grafo;
-    private Vector<Integer> verticesVerificados;
+	private Vector<Integer> verticesVerificados;
+    private Boolean []verticesVisitados;
     private Integer []distancias;
     private Integer []pesos;
     private Integer []verticePai;
-    private int quantidadeDeNos;
-    private ArrayList<Integer> arvore = new ArrayList<>();
 
-    ArrayList<Integer> paraVisitar = new ArrayList<>();
-    ArrayList<Integer> visitados = new ArrayList<>();
     public DeepingFirstSearch(ArrayList<Vector<Pair>> grafo, int quantidadeDeNos) {
         this.grafo = grafo;
-        verticesVisitados = new HashSet<Integer>();
-        verticesVerificados = new Vector<Integer>();
-        distancias = new Integer[100000];
+        verticesVisitados = new Boolean[100000];
+		verticesVerificados = new Vector<Integer>();
         pesos = new Integer[100000];
         verticePai = new Integer[100000];
+        distancias = new Integer[100000];
         for(int i=0; i< quantidadeDeNos+10; ++i) {
-            distancias[i] = 100000;
+            distancias[i] = -1;
             verticePai[i] = -1;
             pesos[i] = 0;
+            verticesVisitados[i] = false;
         }
     }
-    public int DFS(Integer inicio){
 
-        for(int i = 0; i < grafo.size(); i++) {
-            if (!verticesVisitados.contains(inicio)){
-                DFSVisit(inicio);
+
+    public int DFS(Integer inicio, Integer destino){
+        Stack<Triplet> paraVisitar = new Stack<>();
+        verticesVisitados[inicio] = true;
+        distancias[inicio] = 0;
+        verticePai[inicio] = inicio;
+        paraVisitar.add(new Triplet(inicio, 0, inicio));
+        while(!paraVisitar.isEmpty()){
+        	verticesVerificados.add(paraVisitar.peek().getFirst());
+        	Triplet verticeAtual = paraVisitar.pop();
+        	mostrarSequenciaDeNos();
+            for(Pair verticeVizinho : grafo.get(verticeAtual.getFirst())){
+                if(verticesVisitados[verticeVizinho.getFirst()] == false) {
+                    System.out.println(verticeAtual.getFirst() + " ---> " + verticeVizinho.getFirst());
+                    paraVisitar.add(new Triplet(verticeVizinho.getFirst(), 
+                    		verticeAtual.getSecond()+1, verticeAtual.getFirst()));
+                    verticesVisitados[verticeVizinho.getFirst()] = true;
+                    verticePai[verticeVizinho.getFirst()] = verticeAtual.getFirst();
+                    distancias[verticeVizinho.getFirst()] = verticeAtual.getSecond()+1;
+                    pesos[verticeVizinho.getFirst()] = verticeVizinho.getSecond();
+                }
             }
-            else{
-                inicio = grafo.get(i).firstElement().getFirst();
+            if(!paraVisitar.isEmpty()) {
+            	paraVisitar = printaFila(paraVisitar);
             }
         }
-        return 0;
+        
+        if(verticesVisitados[destino]==true) {
+        	return 1;
+        } 	
+        else {
+        	return 0;
+        }
     }
-    public void DFSVisit(Integer inicio){
-        if(!visitados.contains(inicio)) {
-            visitados.add(inicio);
-        }
-        System.out.println("visitados: " + visitados);
-        for(int i = 0; i < grafo.get(inicio).size(); i++){
-            if(!visitados.contains(grafo.get(inicio).get(i).getFirst())) {
-                arvore.add(inicio);
-                DFSVisit(grafo.get(inicio).get(i).getFirst());
-                System.out.println(arvore);
-            }
-
-        }
-
-    }
-
+    
+    private Stack<Triplet> printaFila(Stack<Triplet> paraVisitar) {
+		Stack<Triplet> paraVisitarClone =
+				new Stack<>();
+		System.out.print("------------------\n"
+				+ "   Fila atual\n"
+				+ "dist vert (pai)\n");
+		
+	    while(!paraVisitar.isEmpty()){
+	    	Triplet vertice = paraVisitar.peek();
+	    	paraVisitarClone.add(paraVisitar.pop());
+	        System.out.printf(" %02d   %02d  (%02d)\n", vertice.getSecond(),
+	        		vertice.getFirst(), vertice.getThird());
+	    }
+	    System.out.print("------------------\n");
+	    return paraVisitarClone;
+	}
+    
+    private void mostrarSequenciaDeNos() {
+		System.out.print("\nSequencia atual de vértices:\n");
+	    System.out.print(verticesVerificados.get(0));
+	    Boolean first = true;
+	    for(Integer vertice : verticesVerificados){
+	        if(first){
+	            first = false;
+	            continue;
+	        }
+	        System.out.printf(" -> %d", vertice);
+	    }
+	    System.out.println("\n");
+	}
 }

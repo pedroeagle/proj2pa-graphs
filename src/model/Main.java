@@ -34,12 +34,15 @@ public class Main {
 		grafo.get(5).add(new Pair(7, 1));
 		grafo.get(6).add(new Pair(7, 1));
 		ArrayList<Vector<Pair>> grafo2 = grafo;
+		System.out.println("---------BFS----------");
 		BreadthFirstSearch b = new BreadthFirstSearch(grafo2, 8);
 		b.BFS(verticeInicial, verticeDestino);
+		System.out.println("---------DJS----------");
 		Dijkstra dijkstra = new Dijkstra(grafo, 8);
 		dijkstra.ssspDijkstra(verticeInicial, verticeDestino);
+		System.out.println("---------DFS----------");
 		DeepingFirstSearch d = new DeepingFirstSearch(grafo, 8);
-		d.DFS(verticeInicial);
+		d.DFS(verticeInicial, verticeDestino);
 	}
 
 }

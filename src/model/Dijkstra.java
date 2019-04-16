@@ -13,7 +13,6 @@ public class Dijkstra {
 	private Integer []distancias;
 	private Integer []pesos;
 	private Integer []verticePai;
-	private int quantidadeDeNos;
 	
 	public Dijkstra(ArrayList<Vector<Pair>> grafo, int quantidadeDeNos) {
 		this.grafo = grafo;
@@ -34,6 +33,8 @@ public class Dijkstra {
 	    		new PriorityQueue<Triplet>(new TripletComparator());
 
 	    distancias[inicio] = 0;
+	    verticePai[inicio] = inicio;
+	    pesos[inicio] = 0;
 	    paraVisitar.offer(new Triplet(distancias[inicio], inicio, inicio));
 	    
 	    while(!paraVisitar.isEmpty()) {
@@ -123,7 +124,7 @@ public class Dijkstra {
 	            first = false;
 	            continue;
 	        }
-	        System.out.printf("-> %d", vertice);
+	        System.out.printf(" -> %d", vertice);
 	    }
 	    System.out.println("\n");
 	}

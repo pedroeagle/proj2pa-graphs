@@ -34,7 +34,7 @@ public class Triplet{
 
     public String toString()
     { 
-           return "(" + first + ", " + second + ")"; 
+           return "(" + first + ", " + second + ", " + third + ")"; 
     }
 
     public Integer getFirst() {

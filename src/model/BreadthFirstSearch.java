@@ -3,62 +3,91 @@ package model;
 import java.util.*;
 
 public class BreadthFirstSearch {
-    private Set<Integer> verticesVisitados;
     private ArrayList<Vector<Pair>> grafo;
-    private Vector<Integer> verticesVerificados;
+	private Vector<Integer> verticesVerificados;
+    private Boolean []verticesVisitados;
     private Integer []distancias;
     private Integer []pesos;
     private Integer []verticePai;
-    private int quantidadeDeNos;
 
     public BreadthFirstSearch(ArrayList<Vector<Pair>> grafo, int quantidadeDeNos) {
         this.grafo = grafo;
-        verticesVisitados = new HashSet<Integer>();
-        verticesVerificados = new Vector<Integer>();
-        distancias = new Integer[100000];
+        verticesVisitados = new Boolean[100000];
+		verticesVerificados = new Vector<Integer>();
         pesos = new Integer[100000];
         verticePai = new Integer[100000];
+        distancias = new Integer[100000];
         for(int i=0; i< quantidadeDeNos+10; ++i) {
-            distancias[i] = 100000;
+            distancias[i] = -1;
             verticePai[i] = -1;
             pesos[i] = 0;
+            verticesVisitados[i] = false;
         }
     }
 
 
     public int BFS(Integer inicio, Integer destino){
-        Queue<Integer> paraVisitar = new LinkedList<>();
-        ArrayList<Integer> visitados = new ArrayList<>();
-        paraVisitar.add(inicio);
-        visitados.add(inicio);
-        int path = 0;
+        Queue<Triplet> paraVisitar = new LinkedList<>();
+        verticesVisitados[inicio] = true;
+        distancias[inicio] = 0;
+        verticePai[inicio] = inicio;
+        paraVisitar.add(new Triplet(inicio, 0, inicio));
         while(!paraVisitar.isEmpty()){
-            for(int i = 0; i < grafo.get(inicio).size(); i++){
-                if(!visitados.contains(grafo.get(inicio).get(i).getFirst())) {
-                    System.out.println(inicio + " ---> " + grafo.get(inicio).get(i).getFirst());
-                    if(!paraVisitar.contains(grafo.get(inicio).get(i).getFirst())) {
-                        paraVisitar.add(grafo.get(inicio).get(i).getFirst());
-                        visitados.add(inicio);
-                    }
+        	verticesVerificados.add(paraVisitar.peek().getFirst());
+        	Triplet verticeAtual = paraVisitar.poll();
+        	mostrarSequenciaDeNos();
+            for(Pair verticeVizinho : grafo.get(verticeAtual.getFirst())){
+                if(verticesVisitados[verticeVizinho.getFirst()] == false) {
+                    System.out.println(verticeAtual.getFirst() + " ---> " + verticeVizinho.getFirst());
+                    paraVisitar.add(new Triplet(verticeVizinho.getFirst(), 
+                    		verticeAtual.getSecond()+1, verticeAtual.getFirst()));
+                    verticesVisitados[verticeVizinho.getFirst()] = true;
+                    verticePai[verticeVizinho.getFirst()] = verticeAtual.getFirst();
+                    distancias[verticeVizinho.getFirst()] = verticeAtual.getSecond()+1;
+                    pesos[verticeVizinho.getFirst()] = verticeVizinho.getSecond();
                 }
             }
-
-            System.out.println("visitados "+visitados);
-            System.out.println("paraVisitar "+paraVisitar);
-            inicio = paraVisitar.poll();
-            while(visitados.contains(inicio)){
-                inicio = paraVisitar.peek();
-                paraVisitar.remove();
+            if(!paraVisitar.isEmpty()) {
+            	paraVisitar = printaFila(paraVisitar);
             }
-            if (!visitados.contains(destino)){
-                path++;
-            }
-            else{
-                return path;
-            }
-            System.out.println("path: "+path);
         }
-
-        return path;
+        
+        if(verticesVisitados[destino]==true) {
+        	return 1;
+        } 	
+        else {
+        	return 0;
+        }
     }
+    
+    private Queue<Triplet> printaFila(Queue<Triplet> paraVisitar) {
+		Queue<Triplet> paraVisitarClone =
+				new LinkedList<>();
+		System.out.print("------------------\n"
+				+ "   Fila atual\n"
+				+ "dist vert (pai)\n");
+		
+	    while(!paraVisitar.isEmpty()){
+	    	Triplet vertice = paraVisitar.peek();
+	    	paraVisitarClone.add(paraVisitar.poll());
+	        System.out.printf(" %02d   %02d  (%02d)\n", vertice.getSecond(),
+	        		vertice.getFirst(), vertice.getThird());
+	    }
+	    System.out.print("------------------\n");
+	    return paraVisitarClone;
+	}
+    
+    private void mostrarSequenciaDeNos() {
+		System.out.print("\nSequencia atual de vértices:\n");
+	    System.out.print(verticesVerificados.get(0));
+	    Boolean first = true;
+	    for(Integer vertice : verticesVerificados){
+	        if(first){
+	            first = false;
+	            continue;
+	        }
+	        System.out.printf(" -> %d", vertice);
+	    }
+	    System.out.println("\n");
+	}
 }
