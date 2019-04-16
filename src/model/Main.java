@@ -3,7 +3,7 @@ package model;
 import java.util.ArrayList;
 import java.util.Vector;
 
-public class main {
+public class Main {
 
 	public static void main(String[] args) {
 		ArrayList<Vector<Pair>> grafo = new ArrayList<Vector<Pair>>();
@@ -12,6 +12,7 @@ public class main {
 		for(int i=0; i<8; ++i) {
 			grafo.add(new Vector<Pair>());
 		}
+
 		grafo.get(0).add(new Pair(1, 3));
 		grafo.get(0).add(new Pair(3, 2));
 		grafo.get(0).add(new Pair(7, 10));
@@ -32,7 +33,9 @@ public class main {
 		grafo.get(4).add(new Pair(6, 15));
 		grafo.get(5).add(new Pair(7, 9));
 		grafo.get(6).add(new Pair(7, 3));
-		
+
+		BreadthFirstSearch b = new BreadthFirstSearch(grafo, 8);
+		b.BFS(verticeInicial, 3);
 		Dijkstra dijkstra = new Dijkstra(grafo, 8);
 		dijkstra.ssspDijkstra(verticeInicial, verticeDestino);
 	}
