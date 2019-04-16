@@ -27,9 +27,10 @@ public class BreadthFirstSearch {
 
 
     public int BFS(Integer inicio, Integer destino){
-        ArrayList<Integer> paraVisitar = new ArrayList<>();
+        Queue<Integer> paraVisitar = new LinkedList<>();
         ArrayList<Integer> visitados = new ArrayList<>();
         paraVisitar.add(inicio);
+        visitados.add(inicio);
         int path = 0;
         while(!paraVisitar.isEmpty()){
             for(int i = 0; i < grafo.get(inicio).size(); i++){
@@ -37,18 +38,17 @@ public class BreadthFirstSearch {
                     System.out.println(inicio + " ---> " + grafo.get(inicio).get(i).getFirst());
                     if(!paraVisitar.contains(grafo.get(inicio).get(i).getFirst())) {
                         paraVisitar.add(grafo.get(inicio).get(i).getFirst());
+                        visitados.add(inicio);
                     }
                 }
             }
-            visitados.add(inicio);
+
             System.out.println("visitados "+visitados);
             System.out.println("paraVisitar "+paraVisitar);
-            paraVisitar.remove(inicio);
-            inicio = paraVisitar.get(0);
-            paraVisitar.remove(0);
+            inicio = paraVisitar.poll();
             while(visitados.contains(inicio)){
-                inicio = paraVisitar.get(0);
-                paraVisitar.remove(0);
+                inicio = paraVisitar.peek();
+                paraVisitar.remove();
             }
             if (!visitados.contains(destino)){
                 path++;
