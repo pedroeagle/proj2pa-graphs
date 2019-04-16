@@ -38,6 +38,8 @@ public class Main {
 		b.BFS(verticeInicial, 3);
 		Dijkstra dijkstra = new Dijkstra(grafo, 8);
 		dijkstra.ssspDijkstra(verticeInicial, verticeDestino);
+		DeepingFirstSearch d = new DeepingFirstSearch(grafo, 8);
+		d.DFS(verticeInicial);
 	}
 
 }
