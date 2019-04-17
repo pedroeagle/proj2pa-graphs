@@ -1,13 +1,18 @@
 package model;
 
+import view.MainPage;
+
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Vector;
 
 public class Main {
 
 	public static void main(String[] args) {
-		ArrayList<Vector<Pair>> grafo = new ArrayList<Vector<Pair>>();
-		int verticeInicial = 0;
+
+
+
+		/*int verticeInicial = 0;
 		int verticeDestino = 7;
 		for(int i=0; i<8; ++i) {
 			grafo.add(new Vector<Pair>());
@@ -44,7 +49,24 @@ public class Main {
 		System.out.println("---------DFS----------");
 		DeepingFirstSearch d = new DeepingFirstSearch(grafo, 8);
 		caminhos[2] = d.DFS(verticeInicial, verticeDestino);
-		System.out.println(caminhos[0] + caminhos[1] + caminhos[2]);
+		System.out.println(caminhos[0] + caminhos[1] + caminhos[2]);*/
+		new MainPage();
+	}
+	public static ArrayList<Vector<Pair>> grafo = new ArrayList<Vector<Pair>>();
+	public static void RandomGraphGenerate(){
+		int size = new Random().nextInt(50)+50;
+		for(int i = 0; i < size; i++){
+			grafo.add(new Vector<Pair>());
+			int edges = new Random().nextInt()%(size*size);
+			for(int j = 0; j < edges; j++){
+				int vertex = new Random().nextInt(50)+50;
+				int weight = 0;
+				while(weight==0){
+					weight = new Random().nextInt(50)+50;
+				}
+				grafo.get(i).add(new Pair(vertex, weight));
+			}
+		}
 	}
 
 }
