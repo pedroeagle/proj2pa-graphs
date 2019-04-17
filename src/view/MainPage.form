@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="view.MainPage">
-  <grid id="27dc6" binding="MainPagePanel" layout-manager="GridLayoutManager" row-count="5" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="150" vgap="40">
-    <margin top="20" left="20" bottom="20" right="20"/>
+  <grid id="27dc6" binding="MainPagePanel" layout-manager="GridLayoutManager" row-count="5" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="150" vgap="40">
+    <margin top="20" left="20" bottom="20" right="60"/>
     <constraints>
-      <xy x="20" y="20" width="501" height="1724"/>
+      <xy x="547" y="1465" width="661" height="344"/>
     </constraints>
     <properties/>
     <border type="none"/>
     <children>
       <component id="876d8" class="javax.swing.JButton" binding="bfsMainButton">
         <constraints>
-          <grid row="2" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="2" use-parent-layout="false"/>
+          <grid row="2" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <text value="Busca por Largura"/>
@@ -18,7 +18,7 @@
       </component>
       <component id="658ca" class="javax.swing.JButton" binding="dfsMainButton">
         <constraints>
-          <grid row="3" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="2" use-parent-layout="false"/>
+          <grid row="3" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <text value="Busca em Profundidade"/>
@@ -26,7 +26,7 @@
       </component>
       <component id="8f52b" class="javax.swing.JButton" binding="djiMainButton">
         <constraints>
-          <grid row="4" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="2" use-parent-layout="false"/>
+          <grid row="4" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <text value="Dijkstra"/>
@@ -40,19 +40,27 @@
           <text value="Gerar Grafo"/>
         </properties>
       </component>
+      <component id="95c7a" class="javax.swing.JLabel" binding="generateMainText">
+        <constraints>
+          <grid row="1" column="0" row-span="1" col-span="3" vsize-policy="6" hsize-policy="6" anchor="1" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="15" height="15"/>
+          </grid>
+        </constraints>
+        <properties>
+          <text value=""/>
+        </properties>
+      </component>
       <component id="78877" class="javax.swing.JButton" binding="createMainButton">
         <constraints>
-          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <text value="Criar grafo"/>
         </properties>
       </component>
-      <component id="95c7a" class="javax.swing.JLabel" binding="generateMainText">
+      <component id="71d6f" class="javax.swing.JLabel" binding="sizeMainText">
         <constraints>
-          <grid row="1" column="0" row-span="1" col-span="2" vsize-policy="6" hsize-policy="6" anchor="1" fill="1" indent="0" use-parent-layout="false">
-            <preferred-size width="15" height="15"/>
-          </grid>
+          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <text value=""/>

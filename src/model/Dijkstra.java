@@ -91,7 +91,7 @@ public class Dijkstra {
 
 	private String gerarCaminho(Integer inicio, Integer destino) {
 		String caminhoInicioDestinoPeso = new String();
-		caminhoInicioDestinoPeso += "Caminho encontrado pelo Dijkstra:\n";
+		caminhoInicioDestinoPeso += "<html>Caminho encontrado pelo Dijkstra:		<br>";
 		Stack<Integer> caminhoInicioDestino = new Stack<>();
 		caminhoInicioDestino.add(destino);
 		int verticeAtual = destino;
@@ -112,8 +112,9 @@ public class Dijkstra {
 	    	caminhoInicioDestinoPeso+= " -> " + caminhoInicioDestino.peek();
 	        pesoDoCaminho += pesos[caminhoInicioDestino.pop()];	     
 	    }
-	    caminhoInicioDestinoPeso += "\n";
-	    caminhoInicioDestinoPeso += "Distância total: " + pesoDoCaminho + "\n";
+	    caminhoInicioDestinoPeso+="<br>";
+	    caminhoInicioDestinoPeso += "Distância total: " + pesoDoCaminho + "<br>";
+	    caminhoInicioDestinoPeso+="</html>";
 	    return caminhoInicioDestinoPeso;
 	}
 

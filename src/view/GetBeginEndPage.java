@@ -18,7 +18,7 @@ public class GetBeginEndPage {
     private JLabel fimGetText;
     private JTextField inicioGetIn;
     public static Integer[] inicioFim = new Integer[2];
-
+    private static String result;
 
     public GetBeginEndPage(int algorithm){
 
@@ -27,7 +27,7 @@ public class GetBeginEndPage {
             getBeginEndPage.setContentPane(getBeginEndPanel);
             getBeginEndPage.setLocation(450, 250);
         }
-        getBeginEndPage.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        getBeginEndPage.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         getBeginEndPage.pack();
         getBeginEndPage.setVisible(true);
         switch (algorithm) {
@@ -39,7 +39,8 @@ public class GetBeginEndPage {
                             inicioFim[0] = Integer.valueOf(inicioGetIn.getText());
                             inicioFim[1] = Integer.valueOf(fimGetIn.getText());
                             BreadthFirstSearch b = new BreadthFirstSearch(grafo, grafo.size());
-                            System.out.println(b.BFS(inicioFim[0], inicioFim[1]));
+                            result = b.BFS(inicioFim[0], inicioFim[1]);
+                            new resultPage(result);
                             getBeginEndPage.dispose();
                         }
 
@@ -67,6 +68,7 @@ public class GetBeginEndPage {
                 } catch (Exception error) {
                     new GetBeginEndPage(0);
                 }
+                break;
             case 1:
                 try {
                     proximoGetButton.addMouseListener(new MouseListener() {
@@ -75,7 +77,8 @@ public class GetBeginEndPage {
                             inicioFim[0] = Integer.valueOf(inicioGetIn.getText());
                             inicioFim[1] = Integer.valueOf(fimGetIn.getText());
                             DeepingFirstSearch d = new DeepingFirstSearch(grafo, grafo.size());
-                            System.out.println(d.DFS(inicioFim[0], inicioFim[1]));
+                            result = d.DFS(inicioFim[0], inicioFim[1]);
+                            new resultPage(result);
                             getBeginEndPage.dispose();
                         }
 
@@ -103,6 +106,7 @@ public class GetBeginEndPage {
                 } catch (Exception error) {
                     new GetBeginEndPage(1);
                 }
+                break;
             case 2:
                 try {
                     proximoGetButton.addMouseListener(new MouseListener() {
@@ -111,8 +115,9 @@ public class GetBeginEndPage {
                             inicioFim[0] = Integer.valueOf(inicioGetIn.getText());
                             inicioFim[1] = Integer.valueOf(fimGetIn.getText());
                             Dijkstra dij = new Dijkstra(grafo, grafo.size());
-                            System.out.println(dij.ssspDijkstra(inicioFim[0], inicioFim[1]));
+                            result = dij.ssspDijkstra(inicioFim[0], inicioFim[1]);
                             getBeginEndPage.dispose();
+                            new resultPage(result);
                         }
 
                         @Override
@@ -139,6 +144,7 @@ public class GetBeginEndPage {
                 } catch (Exception error) {
                     new GetBeginEndPage(2);
                 }
+                break;
         }
 
 

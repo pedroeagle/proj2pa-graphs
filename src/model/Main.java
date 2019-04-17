@@ -54,12 +54,13 @@ public class Main {
 	}
 	public static ArrayList<Vector<Pair>> grafo = new ArrayList<Vector<Pair>>();
 	public static void RandomGraphGenerate(){
+		grafo.clear();
 		int size = new Random().nextInt(50)+50;
 		for(int i = 0; i < size; i++){
 			grafo.add(new Vector<Pair>());
 			int edges = new Random().nextInt((size*size)/2)+(size*size)/2;
 			for(int j = 0; j < edges; j++){
-				int vertex = new Random().nextInt(50)+50;
+				int vertex = new Random().nextInt(size/2)+size/2;
 				int weight = 0;
 				while(weight==0){
 					weight = new Random().nextInt(50)+50;

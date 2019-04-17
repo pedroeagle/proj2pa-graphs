@@ -20,6 +20,7 @@ public class MainPage {
     private JButton generateMainButton;
     private JLabel generateMainText;
     private JPanel MainPagePanel;
+    private JLabel sizeMainText;
 
     public MainPage(){
         JFrame mainPage = new JFrame("Grafo Debugger");
@@ -177,5 +178,6 @@ public class MainPage {
 
             }
         });
+        sizeMainText.setText("Size: "+grafo.size());
     }
 }

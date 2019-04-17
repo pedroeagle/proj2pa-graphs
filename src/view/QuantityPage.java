@@ -25,6 +25,7 @@ public class QuantityPage {
             @Override
             public void mouseClicked(MouseEvent e) {
                 try {
+                    grafo.clear();
                     int size = Integer.valueOf(selectQuantityIn.getText());
                     for (int i = 0; i < size; i++) {
                         grafo.add(new Vector<Pair>());
