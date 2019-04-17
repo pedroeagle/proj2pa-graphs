@@ -1,5 +1,7 @@
 package view;
 
+import model.BreadthFirstSearch;
+
 import javax.swing.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -7,6 +9,7 @@ import java.awt.event.MouseListener;
 
 import static model.Main.RandomGraphGenerate;
 import static model.Main.grafo;
+import static view.GetBeginEndPage.inicioFim;
 
 public class MainPage {
 
@@ -15,7 +18,7 @@ public class MainPage {
     private JButton dfsMainButton;
     private JButton djiMainButton;
     private JButton generateMainButton;
-    private JTextArea generateMainText;
+    private JLabel generateMainText;
     private JPanel MainPagePanel;
 
     public MainPage(){
@@ -30,6 +33,7 @@ public class MainPage {
         createMainButton.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
+                mainPage.dispose();
                 new QuantityPage();
             }
 
@@ -57,6 +61,8 @@ public class MainPage {
             @Override
             public void mouseClicked(MouseEvent e) {
                 RandomGraphGenerate();
+                mainPage.dispose();
+                new MainPage();
             }
 
             @Override
@@ -90,5 +96,86 @@ public class MainPage {
             bfsMainButton.setVisible(true);
             djiMainButton.setVisible(true);
         }
+
+        bfsMainButton.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+                new GetBeginEndPage(0);
+                //System.out.println(b.BFS(GetBeginEndPage.inicioFim[0], GetBeginEndPage.inicioFim[1]));
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+
+            }
+        });
+        dfsMainButton.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                new GetBeginEndPage(1);
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+
+            }
+        });
+        djiMainButton.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                new GetBeginEndPage(2);
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+
+            }
+        });
     }
 }

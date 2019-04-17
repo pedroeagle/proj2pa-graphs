@@ -48,13 +48,15 @@
           <text value="Criar grafo"/>
         </properties>
       </component>
-      <component id="d0d24" class="javax.swing.JTextArea" binding="generateMainText">
+      <component id="95c7a" class="javax.swing.JLabel" binding="generateMainText">
         <constraints>
           <grid row="1" column="0" row-span="1" col-span="2" vsize-policy="6" hsize-policy="6" anchor="1" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="15" height="15"/>
           </grid>
         </constraints>
-        <properties/>
+        <properties>
+          <text value=""/>
+        </properties>
       </component>
     </children>
   </grid>

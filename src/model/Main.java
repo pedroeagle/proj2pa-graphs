@@ -57,7 +57,7 @@ public class Main {
 		int size = new Random().nextInt(50)+50;
 		for(int i = 0; i < size; i++){
 			grafo.add(new Vector<Pair>());
-			int edges = new Random().nextInt()%(size*size);
+			int edges = new Random().nextInt((size*size)/2)+(size*size)/2;
 			for(int j = 0; j < edges; j++){
 				int vertex = new Random().nextInt(50)+50;
 				int weight = 0;
