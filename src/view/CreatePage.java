@@ -2,6 +2,7 @@ package view;
 
 import model.Main;
 import model.Pair;
+import model.ViewGraph;
 
 import javax.swing.*;
 import java.awt.event.MouseEvent;
@@ -33,7 +34,16 @@ public class CreatePage {
                 try{
                     int first = Integer.valueOf(firstCreateIn.getText());
                     int second = Integer.valueOf(secondCreateIn.getText());
-                    int weight = Integer.valueOf(weightCreateIn.getText());;
+                    Integer weight = Integer.valueOf(weightCreateIn.getText());
+                    if(weight > 0){
+                        System.out.println(weight);
+                    }
+                    else{
+                        System.out.println("não é");
+                    }
+                    if(Integer.valueOf(weightCreateIn.getText()) <= 0){
+                        weight = 1;
+                    }
                     Main.grafo.get(first).add(new Pair(second, weight));
                     createPage.dispose();
                     new CreatePage();
@@ -66,6 +76,8 @@ public class CreatePage {
         prontoCreateButton.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
+                model.ViewGraph v = new model.ViewGraph();
+                v.createAndShowGUI(Main.grafo);
                 createPage.dispose();
                 new MainPage();
             }

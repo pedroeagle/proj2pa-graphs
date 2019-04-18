@@ -1,6 +1,7 @@
 package view;
 
 import model.BreadthFirstSearch;
+import model.Main;
 
 import javax.swing.*;
 import java.awt.event.MouseAdapter;
@@ -62,6 +63,8 @@ public class MainPage {
             @Override
             public void mouseClicked(MouseEvent e) {
                 RandomGraphGenerate();
+                //model.ViewGraph v = new model.ViewGraph();
+                //v.createAndShowGUI(Main.grafo);
                 mainPage.dispose();
                 new MainPage();
             }
