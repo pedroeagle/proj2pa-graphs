@@ -52,6 +52,12 @@ public class Dijkstra {
 	        verticesVerificados.add(verticeAtual);
 	        verticesVisitados.add(verticeAtual);
 	        mostrarSequenciaDeNos();
+	        if(verticesVerificados.contains(destino) == true){
+	        	System.out.println("Caminho gerado!!!");
+				String caminhoInicioDestinoPeso = gerarCaminho(inicio,  destino);
+				return caminhoInicioDestinoPeso;
+			}
+
 	        for(Pair vertice : grafo.get(verticeAtual)) {
 	        	Integer vizinhoDoVerticeAtual = vertice.getFirst();
 	        	Integer distanciaVizinhoDoVerticeAtual = vertice.getSecond();
@@ -122,7 +128,7 @@ public class Dijkstra {
 		PriorityQueue<Triplet> paraVisitarClone =
 				new PriorityQueue<Triplet>(new TripletComparator());
 		System.out.print("------------------\n"
-				+ "   Fila atual\n"
+				+ "   Heap atual\n"
 				+ "dist vert (pai)\n");
 		
 	    while(!paraVisitar.isEmpty()){

@@ -36,6 +36,11 @@ public class DeepingFirstSearch {
         	verticesVerificados.add(paraVisitar.peek().getFirst());
         	Triplet verticeAtual = paraVisitar.pop();
         	mostrarSequenciaDeNos();
+			if(verticesVisitados[destino] == true){
+				System.out.println("Caminho gerado!!!");
+				String caminhoInicioDestinoPeso = gerarCaminho(inicio,  destino);
+				return caminhoInicioDestinoPeso;
+			}
             for(Pair verticeVizinho : grafo.get(verticeAtual.getFirst())){
                 if(verticesVisitados[verticeVizinho.getFirst()] == false) {
                     System.out.println(verticeAtual.getFirst() + " ---> " + verticeVizinho.getFirst());
@@ -57,6 +62,7 @@ public class DeepingFirstSearch {
         	return caminhoInicioDestinoPeso;
         }
         else {
+        	System.out.println("\nNenhum caminho escolhido.\nSem opções restantes.");
 	    	return "Não há conexão entre esses dois vértices";
 	    }
     }
@@ -94,7 +100,7 @@ public class DeepingFirstSearch {
 		Stack<Triplet> paraVisitarClone =
 				new Stack<>();
 		System.out.print("------------------\n"
-				+ "   Fila atual\n"
+				+ "  Pilha atual\n"
 				+ "dist vert (pai)\n");
 		
 	    while(!paraVisitar.isEmpty()){

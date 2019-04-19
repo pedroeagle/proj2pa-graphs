@@ -36,6 +36,11 @@ public class BreadthFirstSearch {
         	verticesVerificados.add(paraVisitar.peek().getFirst());
         	Triplet verticeAtual = paraVisitar.poll();
         	mostrarSequenciaDeNos();
+			if(verticesVisitados[destino] == true){
+				System.out.println("Caminho gerado!!!");
+				String caminhoInicioDestinoPeso = gerarCaminho(inicio,  destino);
+				return caminhoInicioDestinoPeso;
+			}
             for(Pair verticeVizinho : grafo.get(verticeAtual.getFirst())){
                 if(verticesVisitados[verticeVizinho.getFirst()] == false) {
                     System.out.println(verticeAtual.getFirst() + " ---> " + verticeVizinho.getFirst());
@@ -57,7 +62,8 @@ public class BreadthFirstSearch {
         	return caminhoInicioDestinoPeso;
         }
         else {
-	    	return "Não há conexão entre esses dois vértices";
+			System.out.println("\nNenhum caminho escolhido.\nSem opções restantes.");
+			return "Não há conexão entre esses dois vértices";
 	    }
     }
 
