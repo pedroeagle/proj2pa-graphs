@@ -16,7 +16,7 @@
         </constraints>
         <properties/>
       </component>
-      <component id="2ec52" class="javax.swing.JTextArea" binding="secondCreateIn">
+      <component id="6a5c6" class="javax.swing.JTextField" binding="secondCreateIn">
         <constraints>
           <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -24,7 +24,7 @@
         </constraints>
         <properties/>
       </component>
-      <component id="a9726" class="javax.swing.JTextArea" binding="weightCreateIn">
+      <component id="fc8f" class="javax.swing.JTextField" binding="weightCreateIn">
         <constraints>
           <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>

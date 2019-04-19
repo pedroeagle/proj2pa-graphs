@@ -35,12 +35,15 @@ public class ViewGraph extends javax.swing.JPanel{
     }
 
     public static void createAndShowGUI(ArrayList<Vector<model.Pair>> myGraph) {
-        JFrame f = new JFrame();
-        f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        JFrame f = new JFrame("Seu grafo");
+        if(f!=null){
+            f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            f.setLocation(450, 250);
+        }
 
         Graph<String, String> g = converteGraph(myGraph);
 
-        Dimension size = new Dimension(800, 800);
+        Dimension size = new Dimension(600, 600);
         VisualizationViewer<String, String> vv =
                 new VisualizationViewer<String, String>(
                         new FRLayout<String, String>(g, size));
