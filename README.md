@@ -8,7 +8,7 @@ O programa pode ser executado de dois modos, tanto pela execução pela [IDEA](h
 	sudo apt-get install default-jre
 	```
 	Passo a passo:
-	* 1º: Faça [aqui](https://github.com/pedroeagle/proj2pa-graphs/blob/master/JAR/proj2pa-graphs.jar) o download do proj2pa-graphs.jar
+	* 1º: Faça [aqui](https://github.com/pedroeagle/proj2pa-graphs/raw/master/JAR/proj2pa-graphs.jar) o download do proj2pa-graphs.jar
 	* 2º: Executando:
 		- No Linux e MacOS:
 		Encontre o diretório onde foi baixado o executável e dê o seguinte comando:
