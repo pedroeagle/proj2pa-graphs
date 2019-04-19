@@ -26,7 +26,7 @@ public class CreatePage {
             createPage.setContentPane(createPagePanel);
             createPage.setLocation(450, 250);
         }
-        infoCreateText.setText("<html><body>Pesos com valor menor ou igual a zero ou caso a caixa de texto correspondentes ao peso esteja em branco, serão definidos iguais a 1.</body></html>");
+        infoCreateText.setText("<html><body>Peso com valor menor ou igual a zero ou caso a caixa de texto correspondente ao peso esteja em branco, o mesmo será definido igual a 1.</body></html>");
         proximoCreateButton.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {

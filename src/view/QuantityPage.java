@@ -60,7 +60,7 @@ public class QuantityPage {
         });
 
 
-        quantityPage.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        quantityPage.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         quantityPage.pack();
         quantityPage.setVisible(true);
     }
