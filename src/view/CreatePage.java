@@ -2,7 +2,6 @@ package view;
 
 import model.Main;
 import model.Pair;
-import model.ViewGraph;
 
 import javax.swing.*;
 import java.awt.event.MouseEvent;
@@ -10,8 +9,8 @@ import java.awt.event.MouseListener;
 
 public class CreatePage {
     private JTextField firstCreateIn;
-    private JTextArea secondCreateIn;
-    private JTextArea weightCreateIn;
+    private JTextField secondCreateIn;
+    private JTextField weightCreateIn;
     private JLabel titleCreateText;
     private JLabel firstCreateText;
     private JLabel secondCreateText;
@@ -34,16 +33,16 @@ public class CreatePage {
                 try{
                     int first = Integer.valueOf(firstCreateIn.getText());
                     int second = Integer.valueOf(secondCreateIn.getText());
-                    Integer weight = Integer.valueOf(weightCreateIn.getText());
-                    if(weight > 0){
-                        System.out.println(weight);
-                    }
-                    else{
-                        System.out.println("não é");
-                    }
-                    if(Integer.valueOf(weightCreateIn.getText()) <= 0){
+                    int weight = 0;
+                    String weightData = weightCreateIn.getText().trim();
+                    boolean hasNewLine = weightData.contains(System.getProperty("line.separator"));
+                    if((!(weightData.length() > 0) && !hasNewLine) || Integer.valueOf(weightData) <= 0){
                         weight = 1;
                     }
+                    else{
+                        weight = Integer.valueOf(weightData);
+                    }
+                    System.out.println(weight);
                     Main.grafo.get(first).add(new Pair(second, weight));
                     createPage.dispose();
                     new CreatePage();
@@ -76,10 +75,10 @@ public class CreatePage {
         prontoCreateButton.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                model.ViewGraph v = new model.ViewGraph();
-                v.createAndShowGUI(Main.grafo);
                 createPage.dispose();
                 new MainPage();
+                model.ViewGraph v = new model.ViewGraph();
+                v.createAndShowGUI(Main.grafo);
             }
 
             @Override

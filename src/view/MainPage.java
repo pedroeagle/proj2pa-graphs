@@ -1,16 +1,13 @@
 package view;
 
-import model.BreadthFirstSearch;
 import model.Main;
 
 import javax.swing.*;
-import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import static model.Main.RandomGraphGenerate;
 import static model.Main.grafo;
-import static view.GetBeginEndPage.inicioFim;
 
 public class MainPage {
 
@@ -38,22 +35,18 @@ public class MainPage {
                 mainPage.dispose();
                 new QuantityPage();
             }
-
             @Override
             public void mousePressed(MouseEvent e) {
 
             }
-
             @Override
             public void mouseReleased(MouseEvent e) {
 
             }
-
             @Override
             public void mouseEntered(MouseEvent e) {
                 generateMainText.setText("Abre uma janela para que seja criado um grafo.");
             }
-
             @Override
             public void mouseExited(MouseEvent e) {
                 generateMainText.setText("");
@@ -63,27 +56,23 @@ public class MainPage {
             @Override
             public void mouseClicked(MouseEvent e) {
                 RandomGraphGenerate();
-                //model.ViewGraph v = new model.ViewGraph();
-                //v.createAndShowGUI(Main.grafo);
                 mainPage.dispose();
                 new MainPage();
+                model.ViewGraph v = new model.ViewGraph();
+                v.createAndShowGUI(Main.grafo);
             }
-
             @Override
             public void mousePressed(MouseEvent e) {
 
             }
-
             @Override
             public void mouseReleased(MouseEvent e) {
 
             }
-
             @Override
             public void mouseEntered(MouseEvent e) {
                 generateMainText.setText("Gera um grafo com tamanhos e nós aleatórios.");
             }
-
             @Override
             public void mouseExited(MouseEvent e) {
                 generateMainText.setText(" ");
@@ -104,26 +93,20 @@ public class MainPage {
         bfsMainButton.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-
                 new GetBeginEndPage(0);
-                //System.out.println(b.BFS(GetBeginEndPage.inicioFim[0], GetBeginEndPage.inicioFim[1]));
             }
-
             @Override
             public void mousePressed(MouseEvent e) {
 
             }
-
             @Override
             public void mouseReleased(MouseEvent e) {
 
             }
-
             @Override
             public void mouseEntered(MouseEvent e) {
 
             }
-
             @Override
             public void mouseExited(MouseEvent e) {
 
@@ -134,22 +117,18 @@ public class MainPage {
             public void mouseClicked(MouseEvent e) {
                 new GetBeginEndPage(1);
             }
-
             @Override
             public void mousePressed(MouseEvent e) {
 
             }
-
             @Override
             public void mouseReleased(MouseEvent e) {
 
             }
-
             @Override
             public void mouseEntered(MouseEvent e) {
 
             }
-
             @Override
             public void mouseExited(MouseEvent e) {
 
@@ -160,22 +139,18 @@ public class MainPage {
             public void mouseClicked(MouseEvent e) {
                 new GetBeginEndPage(2);
             }
-
             @Override
             public void mousePressed(MouseEvent e) {
 
             }
-
             @Override
             public void mouseReleased(MouseEvent e) {
 
             }
-
             @Override
             public void mouseEntered(MouseEvent e) {
 
             }
-
             @Override
             public void mouseExited(MouseEvent e) {
 
