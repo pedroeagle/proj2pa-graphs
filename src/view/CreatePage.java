@@ -42,7 +42,6 @@ public class CreatePage {
                     else{
                         weight = Integer.valueOf(weightData);
                     }
-                    System.out.println(weight);
                     Main.grafo.get(first).add(new Pair(second, weight));
                     createPage.dispose();
                     new CreatePage();
