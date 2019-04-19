@@ -8,7 +8,7 @@ O programa pode ser executado de dois modos, tanto pela execução pela [IDEA](h
 	sudo apt-get install default-jre
 	```
 	Passo a passo:
-	* 1º: Faça [aqui](link) o download do proj2pa-graphs.jar
+	* 1º: Faça [aqui](https://github.com/pedroeagle/proj2pa-graphs/blob/master/JAR/proj2pa-graphs.jar) o download do proj2pa-graphs.jar
 	* 2º: Executando:
 		- No Linux e MacOS:
 		Encontre o diretório onde foi baixado o executável e dê o seguinte comando:
@@ -19,7 +19,7 @@ O programa pode ser executado de dois modos, tanto pela execução pela [IDEA](h
 		Clique duas vezes sobre o executável. Será aberto o programa.
 	O Graph Debbuger estará pronto para ser usado!
 
-* Executando a partir do IDEAJ
+* Executando a partir do Intelij Idea:
 	* 1º: Importe o projeto na plataforma;
 	* 2º: Verfique se as versões de compilador e JDK estão corretas;
 	* 3º: Casos esteja aparecendo algum erro, verifique se o diretório **lib** está incluso nas bibliotecas;
@@ -36,7 +36,7 @@ O Graph Debugger foi feito para mostrar ao usuário alguns processos de travessi
 * Grafo:
 	* Criar grafo: Permite ao usuário gerar um grafo a partir da inserção do número de vértices e das conexões entre eles. Para gerar a aresta é necessário o vértice de onde ele sai, o vértice destino e o peso dessa ligação.
 	* Gerar grafo: Cria um grafo com número de vertíces, conexões e pesos aleatórios, com limite de 100 vértices.
-    > Após criado ou gerado um grafo, será mostrada uma imagem interativa da representação gráfica de um grafo. Estarão também disponíveis alguns algorítmos de travessia.
+    > Após criado ou gerado um grafo, será mostrada uma imagem interativa da representação gráfica de um grafo. É possível alterar o zoom da imagem por meio do scroll do mouse. Estarão também disponíveis alguns algorítmos de travessia.
     
     ![](https://i.imgur.com/9GCH2iq.png)
 
@@ -57,10 +57,5 @@ O Graph Debugger foi feito para mostrar ao usuário alguns processos de travessi
 	* Openjdk version "11.0.2" 2019-01-15
 	* OpenJDK Runtime Environment (build 11.0.2+9-Ubuntu-3ubuntu118.04.3)
 	* OpenJDK 64-Bit Server VM (build 11.0.2+9-Ubuntu-3ubuntu118.04.3, mixed mode, sharing)
-	> Para adquirir a versão mais atual do Java use os comandos:
-	> ```
-	> $sudo apt-get install default-jdk
-	> $sudo apt-get-install default-jre
-	> ```
 * Compilador: Javac
 * IntelliJ IDEA 2019.1.1 (Ultimate Edition)
