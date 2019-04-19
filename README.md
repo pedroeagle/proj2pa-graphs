@@ -37,6 +37,7 @@ O Graph Debugger foi feito para mostrar ao usuário todos provessos de travessia
     
 
 * Travessias:
+
     	![](https://i.imgur.com/ozN8BZO.png)
 	* Busca por Largura (BFS): Realiza o BFS no grafo gerado a partir de um vértice inicial e um vértice destino e retorna para o usuário se a travessia foi possível ou não e, nos casos possíveis, mostra o caminho percorrido e qual o peso total dele.
 	* Busca em Profundidade (DFS): Realiza o DFS no grafo gerado a partir de um vértice inicial e um vértice destino e retorna para o usuário se a travessia foi possível ou não e, nos casos possíveis, mostra o caminho percorrido e qual o peso total dele.
