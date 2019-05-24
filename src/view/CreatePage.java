@@ -1,7 +1,7 @@
 package view;
 
-import model.Main;
-import model.Pair;
+import controller.Main;
+import controller.Pair;
 
 import javax.swing.*;
 import java.awt.event.MouseEvent;
@@ -76,7 +76,7 @@ public class CreatePage {
             public void mouseClicked(MouseEvent e) {
                 createPage.dispose();
                 new MainPage();
-                model.ViewGraph v = new model.ViewGraph();
+                controller.ViewGraph v = new controller.ViewGraph();
                 v.createAndShowGUI(Main.grafo);
             }
 

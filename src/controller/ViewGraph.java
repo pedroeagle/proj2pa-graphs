@@ -1,4 +1,4 @@
-package model;
+package controller;
 
 import edu.uci.ics.jung.algorithms.layout.FRLayout;
 import edu.uci.ics.jung.algorithms.layout.Layout;
@@ -34,7 +34,7 @@ public class ViewGraph extends javax.swing.JPanel{
 
     }
 
-    public static void createAndShowGUI(ArrayList<Vector<model.Pair>> myGraph) {
+    public static void createAndShowGUI(ArrayList<Vector<controller.Pair>> myGraph) {
         JFrame f = new JFrame("Seu grafo");
         if(f!=null){
             f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -173,13 +173,13 @@ public class ViewGraph extends javax.swing.JPanel{
 
     }
 
-    public static Graph<String, String> converteGraph(ArrayList<Vector<model.Pair>> myGraph)
+    public static Graph<String, String> converteGraph(ArrayList<Vector<controller.Pair>> myGraph)
     {
         Graph<String, String> g = new DirectedSparseGraph<String, String>();
         for(int i=0; i<myGraph.size(); ++i){
             g.addVertex(Integer.toString(i));
             for(int j=0; j< myGraph.get(i).size(); ++j){
-                model.Pair verticeVizinho = myGraph.get(i).get(j);
+                controller.Pair verticeVizinho = myGraph.get(i).get(j);
 
                 g.addEdge("e"+ i+" "+j, Integer.toString(i), Integer.toString(verticeVizinho.getFirst()));
             }

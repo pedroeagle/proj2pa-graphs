@@ -1,13 +1,13 @@
 package view;
 
-import model.Main;
+import controller.Main;
 
 import javax.swing.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-import static model.Main.RandomGraphGenerate;
-import static model.Main.grafo;
+import static controller.Main.RandomGraphGenerate;
+import static controller.Main.grafo;
 
 public class MainPage {
 
@@ -58,7 +58,7 @@ public class MainPage {
                 RandomGraphGenerate();
                 mainPage.dispose();
                 new MainPage();
-                model.ViewGraph v = new model.ViewGraph();
+                controller.ViewGraph v = new controller.ViewGraph();
                 v.createAndShowGUI(Main.grafo);
             }
             @Override

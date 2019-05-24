@@ -1,14 +1,14 @@
 package view;
 
-import model.BreadthFirstSearch;
-import model.DeepingFirstSearch;
-import model.Dijkstra;
+import controller.BreadthFirstSearch;
+import controller.DeepingFirstSearch;
+import controller.Dijkstra;
 
 import javax.swing.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-import static model.Main.grafo;
+import static controller.Main.grafo;
 
 public class GetBeginEndPage {
     private JPanel getBeginEndPanel;

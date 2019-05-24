@@ -1,8 +1,8 @@
-package model;
+package controller;
 
 import java.util.*;
 
-public class BreadthFirstSearch {
+public class DeepingFirstSearch {
     private ArrayList<Vector<Pair>> grafo;
 	private Vector<Integer> verticesVerificados;
     private Boolean []verticesVisitados;
@@ -10,7 +10,7 @@ public class BreadthFirstSearch {
     private Integer []pesos;
     private Integer []verticePai;
 
-    public BreadthFirstSearch(ArrayList<Vector<Pair>> grafo, int quantidadeDeNos) {
+    public DeepingFirstSearch(ArrayList<Vector<Pair>> grafo, int quantidadeDeNos) {
         this.grafo = grafo;
         verticesVisitados = new Boolean[100000];
 		verticesVerificados = new Vector<Integer>();
@@ -26,15 +26,15 @@ public class BreadthFirstSearch {
     }
 
 
-    public String BFS(Integer inicio, Integer destino){
-        Queue<Triplet> paraVisitar = new LinkedList<>();
+    public String DFS(Integer inicio, Integer destino){
+        Stack<Triplet> paraVisitar = new Stack<>();
         verticesVisitados[inicio] = true;
         distancias[inicio] = 0;
         verticePai[inicio] = inicio;
         paraVisitar.add(new Triplet(inicio, 0, inicio));
         while(!paraVisitar.isEmpty()){
         	verticesVerificados.add(paraVisitar.peek().getFirst());
-        	Triplet verticeAtual = paraVisitar.poll();
+        	Triplet verticeAtual = paraVisitar.pop();
         	mostrarSequenciaDeNos();
 			if(verticesVisitados[destino] == true){
 				System.out.println("Caminho gerado!!!");
@@ -62,14 +62,14 @@ public class BreadthFirstSearch {
         	return caminhoInicioDestinoPeso;
         }
         else {
-			System.out.println("\nNenhum caminho escolhido.\nSem opções restantes.");
-			return "Não há conexão entre esses dois vértices";
+        	System.out.println("\nNenhum caminho escolhido.\nSem opções restantes.");
+	    	return "Não há conexão entre esses dois vértices";
 	    }
     }
 
 	private String gerarCaminho(Integer inicio, Integer destino) {
 		String caminhoInicioDestinoPeso = new String();
-		caminhoInicioDestinoPeso += "<html>Caminho encontrado pelo BFS:		<br>";
+		caminhoInicioDestinoPeso += "<html>Caminho encontrado pelo DFS:		<br>";
 		Stack<Integer> caminhoInicioDestino = new Stack<>();
 		caminhoInicioDestino.add(destino);
 		int verticeAtual = destino;
@@ -96,16 +96,16 @@ public class BreadthFirstSearch {
 		return caminhoInicioDestinoPeso;
 	}
     
-    private Queue<Triplet> printaFila(Queue<Triplet> paraVisitar) {
-		Queue<Triplet> paraVisitarClone =
-				new LinkedList<>();
+    private Stack<Triplet> printaFila(Stack<Triplet> paraVisitar) {
+		Stack<Triplet> paraVisitarClone =
+				new Stack<>();
 		System.out.print("------------------\n"
-				+ "   Fila atual\n"
+				+ "  Pilha atual\n"
 				+ "dist vert (pai)\n");
 		
 	    while(!paraVisitar.isEmpty()){
 	    	Triplet vertice = paraVisitar.peek();
-	    	paraVisitarClone.add(paraVisitar.poll());
+	    	paraVisitarClone.add(paraVisitar.pop());
 	        System.out.printf(" %02d   %02d  (%02d)\n", vertice.getSecond(),
 	        		vertice.getFirst(), vertice.getThird());
 	    }

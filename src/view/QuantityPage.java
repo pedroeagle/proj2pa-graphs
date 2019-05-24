@@ -1,13 +1,13 @@
 package view;
 
-import model.Pair;
+import controller.Pair;
 
 import javax.swing.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.Vector;
 
-import static model.Main.grafo;
+import static controller.Main.grafo;
 
 public class QuantityPage {
     private JLabel infoQuantityButton;
